@@ -1,6 +1,16 @@
 # nns_weather
 
-Full on weather and time sync, includes weather transitions as well as rain level and wind speed. Also includes ability to freeze time and weather over exports
+Full weather and time sync in TypeScript, includes weather transitions as well as rain level and wind speed. Also includes ability to freeze time and weather over exports
+
+# Install
+
+- Download this repo or clone it
+- cd into the folder
+- `npm i`
+- `npm run build`
+- add ace permissions for admin commands (see down below)
+- start resource
+- profit
 
 ## Time
 - Time is based on the current UTC time as a base, the default setting is 2 a day. If it is 01:00am UTC, ingame time will be 12:00
