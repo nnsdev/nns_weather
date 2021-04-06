@@ -1,0 +1,36 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "fivem ts template",
+  "main": "index.js",
+  "author": "nns",
+  "scripts": {
+    "build": "webpack --mode production",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "watch": "webpack --mode development --watch true"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@citizenfx/client": "^1.0.2792-1",
+    "@citizenfx/server": "^1.0.2792-1",
+    "@types/mysql": "^2.15.18",
+    "@types/node": "^14.0.27",
+    "fivem-js": "^1.5.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "prettier": "^2.0.5",
+    "remove-files-webpack-plugin": "^1.4.3",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
