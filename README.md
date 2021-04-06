@@ -12,6 +12,8 @@ Full weather and time sync in TypeScript, includes weather transitions as well a
 - start resource
 - profit
 
+**Be advised, client errors use the events `SendAlertError` and `SendAlertSuccess`, you might want to change them to match whatever notification library you are using.
+
 ## Time
 - Time is based on the current UTC time as a base, the default setting is 2 a day. If it is 01:00am UTC, ingame time will be 12:00
 

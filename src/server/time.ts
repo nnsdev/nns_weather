@@ -16,7 +16,7 @@ setImmediate(() => {
 
 setInterval(() => {
   time++
-  if (time >= 24*60) {
+  if (time >= 1440) {
     time = 0
   }
 }, secondsPerMinute * 1000)
