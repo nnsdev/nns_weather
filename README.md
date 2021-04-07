@@ -1,6 +1,6 @@
 # nns_weather
 
-Full weather and time sync in TypeScript, includes weather transitions as well as rain level and wind speed. Also includes ability to freeze time and weather over exports
+Full weather and time sync in TypeScript, includes weather transitions as well as rain level and wind speed. Also includes ability to freeze time and weather over exports and random temperatures based on weather type.
 
 # Install
 
@@ -32,6 +32,7 @@ Weather initializes as EXTRASUNNY
 - `rainLevels` Keeps weather type definitions and how much it rains in those, further info in this [native](https://runtime.fivem.net/doc/natives/?_0x643E26EA6E024D92)
 - `weathers` Keeps all weathers in the list and if they are enabled or disabled. Set `true` if you want it, `false` to disable them.
 - `windSpeeds` Sets the *maximum* wind speed a weather type can reach, this does not have a top limit
+- ´temperatureRanges` Sets the min and max temperature ranges for each weather. **These are only artificial, GTA does not have temperature related natives**
 - `transitions` Contains a list of all types, and to what weather they can transition to with a "weight", **this needs to be sorted from low to high**, the higher the chance in comparison to the other values in the array, the more likely it is going to be picked.
 
 ## Client Exports
