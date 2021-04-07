@@ -1,4 +1,4 @@
-import { secondsPerMinute } from "../common/time"
+import { secondsPerMinute } from "../../common/time"
 
 let timeFrozen = false
 let currentTime = 0

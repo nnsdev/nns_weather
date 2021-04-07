@@ -14,4 +14,5 @@ export interface WeatherProgression {
   windSpeed: number
   windDir: number
   rainLevel: number
+  temperature: number
 }

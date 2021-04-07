@@ -46,6 +46,23 @@ export const windSpeeds: { [key in Weather]: number } = {
   'HALLOWEEN': 12
 }
 
+// this is in fahrenheit, because game is playing in Cali basically
+export const temperatureRanges: { [key in Weather]: number[] } = {
+  'EXTRASUNNY': [90, 110],
+  'CLEAR': [80, 95],
+  'CLEARING': [75, 85],
+  'OVERCAST': [80, 80],
+  'SMOG': [90, 95],
+  'FOGGY': [80, 90],
+  'CLOUDS': [80, 90],
+  'RAIN': [75, 90],
+  'THUNDER': [75, 90],
+  'SNOW': [0, 32],
+  'BLIZZARD': [-15, 10],
+  'SNOWLIGHT': [0, 32],
+  'XMAS': [-5, 15],
+  'HALLOWEEN': [50, 80],
+}
 
 // this follows a weighting system
 // MAKE SURE THIS IS SORTED FROM LOW TO HIGH
@@ -120,6 +137,17 @@ export const transitions: Transitions = {
   'HALLOWEEN': [
     { to: 'CLEARING', chance: 100 },
   ],
+}
+
+export const windDirections = {
+  0: { short: "N", long: "North" },
+  1: { short: "NE", long: "Northeast" },
+  2: { short: "E", long: "East" },
+  3: { short: "SE", long: "Southeast" },
+  4: { short: "S", long: "South" },
+  5: { short: "SW", long: "Southwest" },
+  6: { short: "W", long: "West" },
+  7: { short: "NW", long: "Northwest" }
 }
 
 // some computed weather properties

@@ -1,2 +1,2 @@
-require('./time')
-require('./weather')
+require('./modules/time')
+require('./modules/weather')

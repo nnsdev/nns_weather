@@ -1,4 +1,4 @@
-import { secondsPerDay, secondsPerMinute } from "../common/time"
+import { secondsPerDay, secondsPerMinute } from "../../common/time"
 
 let time = 0
 
@@ -16,7 +16,7 @@ setImmediate(() => {
 
 setInterval(() => {
   time++
-  if (time >= 1440) {
+  if (time >= 24*60) {
     time = 0
   }
 }, secondsPerMinute * 1000)
@@ -27,13 +27,13 @@ RegisterCommand('time', (source: string, args: string[]) => {
   }
 
   if (args.length === 0) {
-    return emitNet('SendAlertError', source, 'Format: /time [0-1339]')
+    return emitNet('SendAlertError', source, 'Format: /time [0-1440]')
   }
 
   const _time = parseInt(args[0])
 
-  if (_time < 0 || _time >= 1440) {
-    return emitNet('SendAlertError', source, 'Format: /time [0-1339]')
+  if (_time < 0 || _time > 1440) {
+    return emitNet('SendAlertError', source, 'Format: /time [0-1440]')
   }
 
   time = _time
