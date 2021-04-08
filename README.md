@@ -35,6 +35,12 @@ Weather initializes as EXTRASUNNY
 - ´temperatureRanges` Sets the min and max temperature ranges for each weather. **These are only artificial, GTA does not have temperature related natives**
 - `transitions` Contains a list of all types, and to what weather they can transition to with a "weight", **this needs to be sorted from low to high**, the higher the chance in comparison to the other values in the array, the more likely it is going to be picked.
 
+**Vehicle related config options:** `(src/common/config.ts)`
+
+- `VEHICLE_TEMP_ENABLED` vehicle engine temperature will increase based on the artificial temperature, unsure if this has any effects on the car
+- `VEHICLE_CLEANING_ENABLED` vehicle is cleaning itself in rainy weather (reduces vehicle dirt level)
+
+
 ## Client Exports
 
 `exports['nns_weather']:FreezeTime(freeze, freezeAt?)`:

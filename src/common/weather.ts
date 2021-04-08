@@ -1,6 +1,6 @@
 import { Transitions, Weather } from './types'
 
-export const timePerWeather = 20 * 60 // 20 minutes
+export const timePerWeather = 2 * 60 // 20 minutes
 export const preproducedTransitions = 6 // preproduce 6 weathers at a time
 export const overrideTime = 30 // 30 seconds to transition weather type
 

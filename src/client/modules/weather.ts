@@ -2,9 +2,17 @@ import { wait } from "../functions"
 import { includesRain, includesSnow, overrideTime, temperatureRanges, windDirections } from '../../common/weather';
 import { Weather, WeatherProgression } from "../../common/types"
 import { getRandomInt } from 'fivem-js';
+import { vehicleTemp, vehicleCleaning } from './car';
 
 let weatherFrozen = false
-let currentWeather = 'EXTRASUNNY'
+
+export let currentWeather: WeatherProgression = {
+  weather: 'EXTRASUNNY',
+  windSpeed: 0,
+  windDir: 0,
+  rainLevel: 0,
+  temperature: 0
+}
 
 setImmediate(() => {
   emitNet('nns_weather:client:weather:request')
@@ -21,24 +29,24 @@ const setWeather = async (weather: WeatherProgression, skipFreeze = false): Prom
       weather.temperature,
       (weather.windSpeed * 2.236936).toFixed(2),
       windDirections[Math.round(weather.windDir)].long,
-      includesRain.includes(currentWeather) ? `with Rain at ${Math.round(weather.rainLevel * 100)}%` : ''
+      includesRain.includes(currentWeather.weather) ? `with Rain at ${Math.round(weather.rainLevel * 100)}%` : ''
     ]
   })
-  if (currentWeather !== weather.weather) {
+  if (currentWeather.weather !== weather.weather) {
     SetWeatherTypeOvertimePersist(weather.weather, overrideTime)
     await wait(overrideTime * 1000)
-    currentWeather = weather.weather
+    currentWeather = weather
   }
   ClearOverrideWeather()
   ClearWeatherTypePersist()
 
-  SetWeatherTypePersist(currentWeather)
-  SetWeatherTypeNow(currentWeather)
-  SetWeatherTypeNowPersist(currentWeather)
-  SetForceVehicleTrails(includesSnow.includes(currentWeather))
-  SetForcePedFootstepsTracks(includesSnow.includes(currentWeather))
+  SetWeatherTypePersist(currentWeather.weather)
+  SetWeatherTypeNow(currentWeather.weather)
+  SetWeatherTypeNowPersist(currentWeather.weather)
+  SetForceVehicleTrails(includesSnow.includes(currentWeather.weather))
+  SetForcePedFootstepsTracks(includesSnow.includes(currentWeather.weather))
 
-  if (includesRain.includes(currentWeather)) {
+  if (includesRain.includes(currentWeather.weather)) {
     SetRainFxIntensity(weather.rainLevel)
   }
 
@@ -49,6 +57,11 @@ const setWeather = async (weather: WeatherProgression, skipFreeze = false): Prom
 onNet('nns_weather:client:weather', async (weather: WeatherProgression) => {
   setWeather(weather)
 })
+
+setInterval(() => {
+  vehicleCleaning(currentWeather)
+  vehicleTemp(currentWeather)
+}, 30000)
 
 global.exports('FreezeWeather', (freeze: boolean, freezeAt?: Weather) => {
   weatherFrozen = freeze
